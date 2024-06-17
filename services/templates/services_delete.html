@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h3 class="display-4">Excluir Serviço</h3>
+    <div class="card-body">
+        <p>Tem certeza que deseja excluir o serviço: </p>
+        <p class="display-6"> {{ object.name }} </p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Excluir</button>
+            <a href="{% url 'services' %}" class="btn btn-secondary"> Cancelar</a>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

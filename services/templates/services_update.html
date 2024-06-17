@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h3 class="display-4">Editar Serviço</h3>
+    <div class="card-body">
+        <form method="post" class="form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="container">
+                <input type="submit" value="Salvar" class="btn btn-primary">
+                <a href="{% url 'services' %}" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
