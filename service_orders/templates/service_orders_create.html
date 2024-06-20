@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-4">
+    <h3 class="display-4">Cadastrar Ordem de Serviço</h3>
+    <div class="card">
+        <div class="card-body">
+            <form method="post" class="form">
+                {% csrf_token %}
+                
+                <br>
+                <h2>Formulário final</h2>
+                <label for="id_client">
+                    Cliente
+                </label>
+
+                {% for cliente in form %}
+                    <option value="{{ cliente }}"></option>
+                {% endfor %}
+                
+                <br>
+                <h3>terminou</h3>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </form>
+        </div>
+    </div>
+    <a href="{% url 'customers' %}" class="btn btn-secondary mt-3">Cancelar</a>
+</div>
+
+{% endblock %}
