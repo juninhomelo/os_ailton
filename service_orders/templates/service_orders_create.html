@@ -1,5 +1,12 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'admin/css/vendor/select2/select2.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/css/autocomplete.css' %}">
+{% endblock %}
+
 {% block content %}
 
 <div class="container mt-4">
@@ -7,25 +14,22 @@
     <div class="card">
         <div class="card-body">
             <form method="post" class="form">
+                
                 {% csrf_token %}
-                
-                <br>
-                <h2>Formulário final</h2>
-                <label for="id_client">
-                    Cliente
-                </label>
-
-                {% for cliente in form %}
-                    <option value="{{ cliente }}"></option>
-                {% endfor %}
-                
-                <br>
-                <h3>terminou</h3>
+                {{ form.as_p }}
                 <button type="submit" class="btn btn-primary">Salvar</button>
+
             </form>
         </div>
     </div>
     <a href="{% url 'customers' %}" class="btn btn-secondary mt-3">Cancelar</a>
 </div>
+
+{% block js %}
+    <script src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+    <script src="{% static 'admin/js/vendor/select2/select2.full.js' %}"></script>
+    <script src="{% static 'admin/js/jquery.init.js' %}"></script>
+    <script src="{% static 'admin/js/autocomplete.js' %}"></script>
+{% endblock %}
 
 {% endblock %}

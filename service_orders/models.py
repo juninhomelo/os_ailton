@@ -34,4 +34,4 @@ class ServiceOrder(models.Model):
     comments = models.TextField(blank=True, null=True)
 
     def __str__(self):
-        return f'Order #{self.pk} - {self.client} - {self.model}'
+        return f'Order # {self.pk} - {self.client} - {self.model}'
