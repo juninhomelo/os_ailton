@@ -1,35 +1,42 @@
+
 {% extends 'base.html' %}
 
 {% load static %}
 
-{% block css %}
-    <link rel="stylesheet" href="{% static 'admin/css/vendor/select2/select2.css' %}">
-    <link rel="stylesheet" href="{% static 'admin/css/autocomplete.css' %}">
+{% block css %} 
+
 {% endblock %}
 
 {% block content %}
 
 <div class="container mt-4">
-    <h3 class="display-4">Cadastrar Ordem de Serviço</h3>
+    <h3 class="display-4">Cadastrar Ordem de Serviço
+
+    <a href="{% url 'customers_create' %}" class="btn btn-success float-end">
+        <i class="bi bi-plus">Cadastrar Cliente</i>
+    </a>
+    <a href="#" class="btn btn-success float-end">
+        <i class="bi bi-plus">Cadastrar Marca</i>
+    </a>
+    </h3>
     <div class="card">
-        <div class="card-body">
-            <form method="post" class="form">
+        <div class="card-body" id="formulario">
+            <form method="post" class="form">{% csrf_token %}
                 
-                {% csrf_token %}
                 {{ form.as_p }}
+
                 <button type="submit" class="btn btn-primary">Salvar</button>
 
             </form>
         </div>
     </div>
-    <a href="{% url 'customers' %}" class="btn btn-secondary mt-3">Cancelar</a>
-</div>
+    <a href="{% url 'service_orders' %}" class="btn btn-secondary mt-3">Cancelar</a>
+</div>  
 
 {% block js %}
-    <script src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
-    <script src="{% static 'admin/js/vendor/select2/select2.full.js' %}"></script>
-    <script src="{% static 'admin/js/jquery.init.js' %}"></script>
-    <script src="{% static 'admin/js/autocomplete.js' %}"></script>
+
+
+    
 {% endblock %}
 
 {% endblock %}

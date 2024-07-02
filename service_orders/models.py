@@ -19,7 +19,7 @@ class ServiceOrder(models.Model):
         ('C', 'CANCELED')
     )
     id = models.AutoField(primary_key=True)
-    client = models.ForeignKey(Client, on_delete=models.CASCADE)
+    client = models.ForeignKey(Client, on_delete=models.PROTECT)
     phone1 = models.CharField(max_length=15, null=True)
     brand = models.ForeignKey(Brand, on_delete=models.PROTECT, related_name='brand')
     model = models.CharField(max_length=200)

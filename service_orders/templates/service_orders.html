@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 
 {% block title %}
-SOS - Clientes
+SOS - Ordens de Serviço
 {% endblock %}
 
 {% block content %}
 
 <div class="row mb-3">
     <div class="col-md-6">
-        <form method="get" action="{% url 'customers' %}">
+        <form method="get" action="{% url 'service_orders' %}">
             <div class="input-group">
                 <input type="text" class="form-control" name="name" placeholder="Nome" value="{{ request.GET.name }}">
                 <button type="submit" class="btn btn-primary">
@@ -35,28 +35,30 @@ SOS - Clientes
             <tr>
                 <th>ID</th>
                 <th class="w-75">Nome</th>
-                <th>Telefone</th>
+                <th>Modelo</th>
                 <th>Ações</th>
             </tr>
         </thead>
         <tbody>
-            {% for client in customers %}
+            {% for os in service_orders %}
             <tr>
-                <td>{{ client.id }}</td>
-                <td>{{ client.name }}</td>
-                <td>{{ client.phone1 }}</td>
+                <td>{{ os.id }}</td>
+                <td>{{ os.client }}</td>
+                <td>{{ os.model }}</td>
                 <td>
-                    <a href="{% url 'customers_detail' client.id %}" class="btn btn-info btn-sm float-end">
+                    <a href="#" class="btn btn-info btn-sm float-end">
                         <i class="bi bi-eye"></i>
                     </a>
-                    <a href="{% url 'customers_update' client.id %}" class="btn btn-primary btn-sm float-end">
+                    <a href="#" class="btn btn-primary btn-sm float-end">
                         <i class="bi bi-pencil-fill"></i>
                     </a>
-                    <a href="{% url 'customers_delete' client.id %}" class="btn btn-danger btn-sm float-end" >
+                    <a href="#" class="btn btn-danger btn-sm float-end" >
                         <i class="bi bi-trash3-fill"></i>
                     </a>
                 </td>
             </tr>
+            {% empty %}
+            <h2>Não há ordens de serviço a serem exibidas...</h2>
             {% endfor %}
         </tbody>
     </table>
