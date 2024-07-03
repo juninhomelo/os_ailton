@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-4">
+    <h3 class="display-4">Visualizar Ordem de Serviço</h3>
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">OS nº: #{{ object.id }}  -  {{ object.client }}</h3>
+            <hr>
+        </div>
+        <div class="card-body">
+            <h4>Dados do Cliente:</h4>
+            <p><strong>Nome: </strong>{{ object.client }} - <strong>Telefones: </strong>{{ object.phone1 }}  /  {{ object.phone2 }}</p>
+            <hr>
+            <h4>Dados da Moto:</h4>
+            <p><strong>Marca: </strong>{{ object.brand }}  -  <strong>Modelo: </strong>{{ object.model }}  -  <strong>Ano: </strong>{{ object.model_year }}
+                <strong>Placa: </strong>{{ object.plate }}
+            </p>
+            <hr>
+            <h4>Detalhes:</h4>
+            <p><strong>Serviços: </strong>
+            {% for service in object.services.all %}
+                # {{service.name}}
+            {% endfor %}
+            <strong> - Produtos: </strong>
+            {% for product in object.products.all %}
+                # {{product.name}}
+            {% endfor %}
+            </p>
+            <p><strong>Data do Término: </strong>{{ object.finished_at }} - <strong>Valor Total: </strong>{{ object.total }}</p>
+            <p class="card-text"><strong>Observações: </strong>{{ object.comments }}</p>
+
+            <hr>
+        </div>
+    </div>
+    <a href="{% url 'service_orders' %}" class="btn btn-secondary mt-3">Voltar</a>
+</div>
+
+{% endblock %}

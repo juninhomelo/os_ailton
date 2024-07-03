@@ -1,11 +1,4 @@
-
 {% extends 'base.html' %}
-
-{% load static %}
-
-{% block css %} 
-
-{% endblock %}
 
 {% block content %}
 
@@ -33,10 +26,16 @@
     <a href="{% url 'service_orders' %}" class="btn btn-secondary mt-3">Cancelar</a>
 </div>  
 
-{% block js %}
-
-
-    
 {% endblock %}
+
+
+{% block scripts %}
+
+<script>
+    $('#id_client').select2();
+    $('#id_brand').select2();
+    $('#id_services').select2();
+    $('#id_products').select2();
+</script>
 
 {% endblock %}
