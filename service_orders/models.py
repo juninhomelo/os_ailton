@@ -29,7 +29,7 @@ class ServiceOrder(models.Model):
     products = models.ManyToManyField(Product, blank=True)
     created_at = models.DateField(auto_now_add=True)
     finished_at = models.DateField(blank=True, null=True)
-    total = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    total = models.DecimalField(max_digits=10, decimal_places=2)
     status = models.CharField(max_length=1, choices=STATUS_CHOICES)
     comments = models.TextField(blank=True, null=True)
 

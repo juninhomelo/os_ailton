@@ -8,6 +8,7 @@ class ServiceListView(ListView):
     model = Service
     template_name = 'services.html'
     context_object_name = 'services'
+    paginate_by = 10
 
     def get_queryset(self):
         queryset = super().get_queryset()

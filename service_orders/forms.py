@@ -1,5 +1,5 @@
 from django import forms
-from service_orders.models import ServiceOrder
+from service_orders.models import ServiceOrder, Brand
 
 
 class ServiceOrderModelForm(forms.ModelForm):
@@ -17,7 +17,7 @@ class ServiceOrderModelForm(forms.ModelForm):
             'services': forms.SelectMultiple(attrs={'class': 'form-control'}),
             'products': forms.SelectMultiple(attrs={'class': 'form-control'}),
             'finished_at': forms.DateInput(),
-            'total': forms.NumberInput(),
+            'total': forms.TextInput(),
             'status': forms.Select(attrs={'class': 'form-control'}),
             'comments': forms.Textarea({'rows':'3'}),            
         }
@@ -33,4 +33,17 @@ class ServiceOrderModelForm(forms.ModelForm):
             'total': 'Valor Total',
             'status': 'Status',
             'comments': 'Observações',
+        }
+
+
+class BrandModelForm(forms.ModelForm):
+
+    class Meta:
+        model = Brand
+        fields = '__all__'
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
+        }
+        labels = {
+            'name': 'Nome',
         }

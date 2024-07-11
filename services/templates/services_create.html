@@ -17,3 +17,17 @@
 </div>
 
 {% endblock %}
+
+{% block scripts %}
+
+    <script>
+        $('#id_price').mask('000.000.000.000.000,00', {reverse: true});
+
+        $('.form').on('submit', function(event) {
+            var priceField = $('#id_price');
+            var formattedPrice = priceField.val().replace(/\./g, '').replace(',', '.');
+            priceField.val(formattedPrice);
+        });
+    </script>
+
+{% endblock %}

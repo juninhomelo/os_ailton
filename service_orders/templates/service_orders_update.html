@@ -24,5 +24,27 @@
     $('#id_brand').select2();
     $('#id_services').select2();
     $('#id_products').select2();
+
+    //Validação para o campo Telefone
+    var SPMaskBehavior = function (val) {
+            return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+        },
+        spOptions = {
+            onKeyPress: function(val, e, field, options) {
+                field.mask(SPMaskBehavior.apply({}, arguments), options);
+            }
+        };
+    //Máscara para o campo Telefone
+    $('#id_phone1').mask(SPMaskBehavior, spOptions);
+    //Máscara para o campo Tempo Estimado
+    $('#id_finished_at').mask('00/00/0000');
+    //Máscara para o campo Valor total
+    $('#id_total').mask('000.000.000.000.000,00', {reverse: true});
+    //Validação do formulário trocando a "," pelo "."
+    $('.form').on('submit', function(event) {
+        var priceField = $('#id_total');
+        var formattedPrice = priceField.val().replace(/\./g, '').replace(',', '.');
+        priceField.val(formattedPrice);
+    });
 </script>
 {% endblock %}
