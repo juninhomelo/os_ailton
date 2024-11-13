@@ -20,12 +20,20 @@
             {% for service in object.services.all %}
                 # {{service.name}}
             {% endfor %}
-            <strong> - Produtos: </strong>
+            <br>
+            <br>
+            <strong>Produtos: </strong>
             {% for product in object.products.all %}
                 # {{product.name}}
             {% endfor %}
             </p>
-            <p><strong>Data do Término: </strong>{{ object.finished_at }} - <strong>Valor Total: </strong>{{ object.total }}</p>
+            <p><strong>Data do Término: </strong>
+            {% if not object.finished_at %}
+                ____/____/____
+            {% else %}
+                {{ object.finished_at }} - 
+            {% endif %}
+            <strong>Valor Total: </strong>{{ object.total }}</p>
             <p class="card-text"><strong>Observações: </strong>{{ object.comments }}</p>
 
             <hr>
